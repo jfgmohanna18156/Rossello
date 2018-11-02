@@ -27,10 +27,10 @@ SubProceso perfil<-LOGGUEO(MATUSU) // EL PARAMETRO MATUSU LLAMA A LA MATRIZ MARI
 	
 	Repetir
 		Repetir // SE REPITE HASTA QUE EL USUARIO SEA DISTINTO DE VACIO
-			ESCRIBIR "INGRESE SU USUARIO";
+			ESCRIBIR "INGRESE SU USUARIO POR FAVOR"; ///
 			LEER USUARIO;
 			SI USUARIO = "" Entonces
-				ESCRIBIR "EL USUARIO NO PUEDE SER VACIO";
+				ESCRIBIR "EL USUARIO NO PUEDE SER VACIO"; ///MAQUILLAJE BUSCAR ALGO BONITO
 				///ERROR QUE SE PUEDE PRESENTAR "USUARIO VACIO"
 				
 			FinSi
@@ -56,15 +56,15 @@ SubProceso perfil<-LOGGUEO(MATUSU) // EL PARAMETRO MATUSU LLAMA A LA MATRIZ MARI
 		SiNo
 			fail<-0; //REINICIA EL CONTADOR DE FAIL PARA COMPROBAR LA CLAVE
 			REPETIR
-				ESCRIBIR "INGRESE CLAVE DE USUARIO";
+				ESCRIBIR "INGRESE CLAVE DE USUARIO";///MAQUILLAJE VER ALGO BONITO
 				leer clave;
 				si clave = MATUSU(indice,1) entonces//COMPRUEBA QUE CLAVE SEA IGUAL AL PARAMETRO 1 DEL MISMO INDICE YA INDICADO 
 					
 					claveok<-verdadero;//CIERRA EL CONDICIONAL AL SER VERDADERO
 				SiNo
 					fail<-fail+1;
-					SI FAIL = 3 ENTONCES
-						ESCRIBIR "TERCER ERROR, SERÁ BANNEADO";// AL TERCER ERROR DE CLAVE ES BANEADO
+					SI FAIL = 3 ENTONCES ///MAQUILLAJE VER ALGO BONITO
+						ESCRIBIR "TERCER ERROR, SERÃ BANNEADO";// AL TERCER ERROR DE CLAVE ES BANEADO 
 						///ERROR QUE SE PUEDE PRESENTAR "ERROR DE CLAVE EN USUARIO VALIDO"
 					SiNo
 						escribir "ERROR ", FAIL, ", INGRESE LA CLAVE CORRECTA";	//INDICA QUE HUBO UN ERROR DE CLAVE
@@ -80,7 +80,7 @@ SubProceso perfil<-LOGGUEO(MATUSU) // EL PARAMETRO MATUSU LLAMA A LA MATRIZ MARI
 		
 		
 	Hasta Que encontrado=verdadero o fail=3
-	
+	///MAQUILLAJE VER ALGO BONITO PARA ACCESO EXITOSO
 	SI CLAVEOK =Verdadero ENTONCES //AL CERRARSE EL CONDICIONAL TOMA DECICION SOBRE SI ES CLAVEOK O FAIL =3 
 		ESCRIBIR "ACCESO EXITOSO, BIENVENIDO ", MATUSU(INDICE,0); //ACCESO EXITOSO, IMPRIME EL NOMBRE DE USUARIO, 
 		//SEGUNDO PARAMETRO VALOR 0
@@ -94,7 +94,6 @@ SubProceso perfil<-LOGGUEO(MATUSU) // EL PARAMETRO MATUSU LLAMA A LA MATRIZ MARI
 	
 FinSubProceso
 /// FIN DE PROCESO DE LOGGUEO
-
 //--------------------------------------------------
 /// INICIO LLENADO DE MATRIZ
 //Modulo para cargar datos a "memoria" 
@@ -131,7 +130,6 @@ Funcion llenador(matrizusuarios por referencia, matrizcaja Por Referencia, nombs
 	matrizusuarios(1,0)<-"usuario"; matrizusuarios(1,1)<-"1234"; matrizusuarios(1,2)<-"usuario";
 	
 	cantreg[2]<-2;
-
 	
 	
 FinFuncion
@@ -145,37 +143,35 @@ subproceso opcion<-validarop()
 	si opmenu="0" o opmenu="1" o opmenu="2" o opmenu="3" o opmenu="4" o opmenu="5" o opmenu="6" o opmenu="7" o opmenu="8" o opmenu="9" entonces
 		opcion<-convertiranumero(opmenu);
 	sino 
-		escribir "ingrese opcion valida";
+		escribir "ingrese opcion valida HASTA  ";///MAQUILLAJE VER ALGO BONITO
 	FinSi
 	
 FinSubProceso
-
 ///fin validar opciones
-
 ///menu
 Funcion salida<-menu(usuario por valor,matrizcaja Por Referencia,matrizusuarios Por Referencia,matrizsucursal Por Referencia,cantreg Por Referencia,nombsucursal por referencia)
 	definir salida como numero;
 	definir opcion como numero;
 	definir limiteopciones como numero;
-	
+	///MAQUILLAJE VER ALGO BONITO M E N U
 	escribir ' ';
 	escribir 'Seleccione la opcion deseada';
 	escribir ' ';
 	escribir '1:   Ver todos los registros de caja'        ;
 	escribir '2:   Ver todos los asignaciones de sucursales';
 	escribir '3:   Buscar registros de una sucursal';
-	escribir '4:   añadir una entrada de caja diaria';
+	escribir '4:   aÃ±adir una entrada de caja diaria';
 	
 	limiteopciones<-4;
 	si usuario="administrador" entonces
 		
-		escribir '5:   Ver todos los usuarios y contraseñas';           
+		escribir '5:   Ver todos los usuarios y contraseÃ±as';           
 		escribir '6:   borrar un rejistro de caja';
 		limiteopciones<-6;//indica las cantidad de opciones que hay
 	FinSi
 	escribir '0:   Salir ';
 	
-	
+	///MAQUILLAJE VER ALGO BONITO ANALIZAR BORRAR PANTALLA
 	
 	repetir 
 		opcion<-validarop();
@@ -218,18 +214,15 @@ Funcion salida<-menu(usuario por valor,matrizcaja Por Referencia,matrizusuarios 
 	esperar tecla;
 	salida<-opcion;
 FinFuncion
-
 ///fin menu
-
-
-
-
 ///muestra todos los valores de caja
 subproceso mostrarcaja(matrizcaja por referencia,cantreg por referencia)
 	definir i, j como numero;
 	// muestra la matriz de registros de caja diaria
+	
+	///maquillaje colocarlos encabezados de las columnas, nro de sucursal, fecha y dinero o caja, signo $$$$
 	Para i<-0 Hasta (cantreg(0)-1 ) Con Paso 1 Hacer
-		Para j<-0 Hasta 2 Con Paso 1 Hacer
+		Para j<-0 Hasta 2 Con Paso 1 Hacer ///maquillaje
 			escribir matrizcaja[i,j],' '  Sin Saltar ; // sin saltar de otra manera solo muestra todo en una columna
 		FinPara
 		escribir ' '; // esto es para que solo haga un "enter"
@@ -241,7 +234,7 @@ FinSubProceso
 ///mostrar todos los valores de sucursal
 Subproceso mostrarsucursal(cantreg por referencia,nombsucursal por referencia)
 	definir i, j como numero;
-	
+	///maquillaje hacer tablita y encabezado
 	// muestra la matriz de sucursales
 	Para i<-0 Hasta cantreg[1]-1 Con Paso 1 Hacer
 		Para j<-0 Hasta 1 Con Paso 1 Hacer
@@ -253,12 +246,12 @@ Subproceso mostrarsucursal(cantreg por referencia,nombsucursal por referencia)
 	
 	
 FinSubProceso
-
 ///fin mostrar valores de sucursal
-
 ///mostrar todos los usuarios
 Subproceso muestrausuarios(matrizusuarios por referencia,cantreg por referencia)
 	definir i, j como numero;
+	
+	///maquillaje hacer tablita y encabezado
 	// muestra la matriz de sucursales
 	Para i<-0 Hasta cantreg[2]-1 Con Paso 1 Hacer
 		Para j<-0 Hasta 2 Con Paso 1 Hacer
@@ -269,13 +262,11 @@ Subproceso muestrausuarios(matrizusuarios por referencia,cantreg por referencia)
 	escribir ' '; 
 FinSubProceso
 ///fin mostrar todos los usuarios
-
-
 ///mostrar todos los valores de una sola sucursal
 Funcion buscarsucursal(matrizcaja Por Referencia,cantreg Por Referencia)   //busca el valor v en la matriz de registros de caja diaria y lo muestra
 	definir opsucursal,i,j como numero;
 	
-	// devuelve a z la fila que da la ultima coincidencia   	z<-0; //		si no se halla nada el resultado de z es 0
+	///maquillaje, hacer tabla y todo eso
 	
 	
 	opsucursal<-validadorsucursal(matrizsucursal,cantreg);//con esto seleccionara la sucursal a mostrar
@@ -284,6 +275,8 @@ Funcion buscarsucursal(matrizcaja Por Referencia,cantreg Por Referencia)   //bus
 	Para i<-0 Hasta cantreg[0]-1 Con Paso 1 Hacer
 		Si matrizcaja[i,0]=opsucursal Entonces
 			// esto causa que el ultimo numero de fila encontrado sea el resultado de la funcion
+			
+			///maquillaje de los mensajes
 			escribir " encontrado en posicion ",i+1; //le sumo 1 porque los indices arrancan en 0
 			Para j<-0 Hasta 2 Con Paso 1 Hacer
 				escribir matrizcaja[i,j],' '  Sin Saltar;  // sin saltar de otra manera solo muestra todo en una columna
@@ -292,7 +285,6 @@ Funcion buscarsucursal(matrizcaja Por Referencia,cantreg Por Referencia)   //bus
 		FinSi	
 	FinPara
 FinFuncion
-
 SubProceso opsucursal<-validadorsucursal(matrizsucursal Por Referencia,cantreg Por Referencia)
 	definir i como numero;
 	definir opsucursal como numero;
@@ -303,7 +295,7 @@ SubProceso opsucursal<-validadorsucursal(matrizsucursal Por Referencia,cantreg P
 		//mas vale que introduzca valores numericos
 		
 		
-		
+		///maquillaje de mensaje
 		
 		si opsucursal>=cantreg(1) Entonces
 			escribir "seleccione una opciones valida";
@@ -311,22 +303,16 @@ SubProceso opsucursal<-validadorsucursal(matrizsucursal Por Referencia,cantreg P
 	Hasta Que opsucursal<cantreg(1) y opsucursal>0
 	
 FinSubProceso
-
-
-
-
-
 ///fin mostrar valores de una sola sucursal
-
 ///ingreso de valores en caja
-Funcion escribircaja(matrizcaja por referencia,cantreg Por Referencia)// añade un registro de caja diaria
+Funcion escribircaja(matrizcaja por referencia,cantreg Por Referencia)// aÃ±ade un registro de caja diaria
 	definir i, opsucursal,ff, dd, mm,aa,cad como numero;
 	definir aprobado como logico;
 	aprobado<-falso;
 	
-	
+	///maquillaje mensajes
 	i<-cantreg[0]; //para escribir en la ultima linea
-	cantreg[0]<-i+1;// para incrementar el tamaño de los registros
+	cantreg[0]<-i+1;// para incrementar el tamaÃ±o de los registros
 	
 	
 	opsucursal<-validadorsucursal(matrizsucursal,cantreg);
@@ -335,7 +321,7 @@ Funcion escribircaja(matrizcaja por referencia,cantreg Por Referencia)// añade u
 	mm<-101;
 	dd<-101;
 	Repetir
-		escribir ' Introducir año (dos ultimos digitos)';
+		escribir ' Introducir aÃ±o (dos ultimos digitos)';
 		leer aa;	
 	Hasta Que aa<100 y aa>=0
 	
@@ -352,7 +338,7 @@ Funcion escribircaja(matrizcaja por referencia,cantreg Por Referencia)// añade u
 		si dd>0 y dd<29 Entonces
 			aprobado<-Verdadero;
 		SiNo
-			si dd=29 y mm=2 y aa%4=0 Entonces //los años divisibles por 4 son los bisiestos
+			si dd=29 y mm=2 y aa%4=0 Entonces //los aÃ±os divisibles por 4 son los bisiestos
 				aprobado<-verdadero;
 			SiNo
 				si dd<31 y (mm=4 o mm=6 o mm=9 o mm=11) Entonces
@@ -361,9 +347,9 @@ Funcion escribircaja(matrizcaja por referencia,cantreg Por Referencia)// añade u
 					si dd<32 y (mm=1 o mm=3 o mm=5 o mm=7 o mm=8 o mm=10 o mm=12) Entonces
 						aprobado<-verdadero;	
 					SiNo
-						escribir "ingrese dia valido";
+						escribir "ingrese dia valido";///maquillaje mensajes
 					FinSi
-				 
+					
 					
 				FinSi
 			FinSi
@@ -373,19 +359,17 @@ Funcion escribircaja(matrizcaja por referencia,cantreg Por Referencia)// añade u
 	Hasta Que aprobado=Verdadero
 	
 	
-	ff<-aa*10000+mm*100+dd; matrizcaja(i,1)<-ff;  //  año mes y dia a un solo valor aammdd
-	escribir ' Introducir valor caja diaria';
+	ff<-aa*10000+mm*100+dd; matrizcaja(i,1)<-ff;  //  aÃ±o mes y dia a un solo valor aammdd
+	escribir ' Introducir valor caja diaria';///maquillaje mensajes
 	leer cad; matrizcaja(i,2)<-cad;
 	
 	
 FinFuncion
-
 ///fin de ingreso de valores en caja
-
 ///inicio borrar valores de caja
 Funcion borrarregistrocaja(matrizcaja Por Referencia,cantreg Por Referencia)  
 	definir posicion_paraborrar,i,j como numero;
-	
+	///maquillaje mensajes
 	Repetir
 		escribir "ingrese posicion para borrar";
 		leer posicion_paraborrar;
@@ -401,9 +385,10 @@ Funcion borrarregistrocaja(matrizcaja Por Referencia,cantreg Por Referencia)
 		matrizcaja[i,j]<-0;//escribe o en la ultima posicion
 	FinPara
 	cantreg[0]<-cantreg[0]-1;//porque bajo la cantidad de lineas de matrizcaja
+	///maquillaje mensaje de borrado exitosamente
+	
 FinFuncion
 ///fin de borrar valores de caja
-
 Proceso sin_titulo
 	///DEFINICION DE VARIABLES PARA LOGGUEO
 	DEFINIR usuario Como caracter;//EL VALOR LOGGIN OBTENDRA COMO RESULTADO UN NUMERO INDICE QUE DETERMINA AL 
@@ -436,8 +421,8 @@ Proceso sin_titulo
 	///FIN DE SUBPROCESO
 	//-----------------------------------------------
 	///LLAMA A SUBPROCESO DE LOGGUEO
-	USUARIO<-LOGGUEO(matrizusuarios); //LOGGING CONTIENE EL NRO INDICE DEL USUARIO QUE INGRESO, SI VALE 100 EL PROGRAMA SE DEBERIA CERRAR
-	escribir usuario;
+	USUARIO<-LOGGUEO(matrizusuarios); //usuario devuelve el perfil del usuario(administrador o usuario) tipo caracter.
+	
 	///finaliza el llamado
 	
 	///inicia llamado a menu si usuario corresponde a administrador o usuario
@@ -446,6 +431,8 @@ Proceso sin_titulo
 			salida<-menu(usuario,matrizcaja,matrizusuarios,matrizsucursal,cantreg,nombsucursal);
 		Hasta Que salida=0	
 	FinSi
+	
+	///maquillaje mensaje de salida
 	
 	
 	
@@ -460,6 +447,3 @@ Proceso sin_titulo
 	
 	
 FinProceso
-
-
-
